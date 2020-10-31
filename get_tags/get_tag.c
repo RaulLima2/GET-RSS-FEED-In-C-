@@ -77,6 +77,11 @@ void get_tag(const char *__restrict__ _filename)
 
 			_line_input_ = cdata_change(_line_input_,"<description>");
 
+			if(count_description == 1)
+			{
+				fprintf(file_html,"%s\n", _line_input_);
+			}
+			
 			if(strstr(_line_input_,"<description>") != NULL)
 			{
 				fprintf(file_html, "%s", description_get(columns_search("<description>", _line_input_)));
@@ -103,10 +108,6 @@ void get_tag(const char *__restrict__ _filename)
 				count_description = 0;
 			}
 			
-			if(count_description == 1)
-			{
-				fprintf(file_html,"%s\n", _line_input_);
-			}
 
 		}
 		
