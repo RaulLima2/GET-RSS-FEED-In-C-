@@ -80,7 +80,11 @@ void get_tag(const char *__restrict__ _filename)
 			if(strstr(_line_input_,"<description>") != NULL)
 			{
 				fprintf(file_html, "%s", description_get(columns_search("<description>", _line_input_)));
-				count_description++;
+
+				if(count_description != 1)
+				{
+					count_description++;
+				}
 			}
 			else if(strstr(_line_input_,"</description>") != NULL)
 			{
@@ -88,16 +92,22 @@ void get_tag(const char *__restrict__ _filename)
 
 				count_description++;
 
-				if(count_description > 0)
+				if(count_description == 2)
 				{
 					count_description = 0;
 				}
 			}
 			
-			if(count_description > 0)
+			if((strstr(_line_input_,"<description>") != NULL) && (strstr(_line_input_,"</description>") != NULL))
 			{
-				printf("%s\n", _line_input_);
+				count_description = 0;
 			}
+			
+			if(count_description == 1)
+			{
+				fprintf(file_html,"%s\n", _line_input_);
+			}
+
 		}
 		
 	}
