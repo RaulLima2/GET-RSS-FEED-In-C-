@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "get/get_tag.h"
+#include "get_datas/get_datas.h"
+#include "get_tags/get_tag.h"
 
 int main(void)
 {
@@ -14,6 +15,5 @@ int main(void)
 
 	get_tag(nome_file);
 
-	//free(nome_file);
   return 0;
 }
